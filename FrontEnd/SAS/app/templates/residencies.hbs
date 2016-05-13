@@ -1,0 +1,26 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of residencies</h3>
+    <br>
+    {{add-code flag="residency"}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneResidency|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneResidency.name}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="residency" id=oneResidency.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>
+

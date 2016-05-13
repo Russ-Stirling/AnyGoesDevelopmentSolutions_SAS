@@ -1,0 +1,24 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of faculties</h3>
+    <br>
+    {{add-code flag="faculty"}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneFaculty|}}
+      <tr>
+        <td>
+          <div class="large-6-columns">
+            {{oneFaculty.name}}
+          </div>
+        </td>
+        <td>
+          {{edit-code flag="faculty" id=oneFaculty.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

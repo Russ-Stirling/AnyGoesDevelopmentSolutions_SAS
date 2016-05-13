@@ -1,0 +1,71 @@
+{{#if isManagingUserRole}}
+  {{#if MR001IsPermitted }}
+    <hr/>
+    <div class="form-group">
+        <div>
+            <h3> Assign Roles for {{userName}}</h3>
+        </div>
+    </div>
+
+    <div style="padding-left: 20px">
+        <div class="form-group">
+            <div class="main-body">
+                <div>
+                    <div div class="form-group" style="padding-left: 20px">
+                        <br>
+                        <!-- display a list of assigned roles names -->
+                        <!-- for the current user                   -->
+                      {{#each userRoleModel as |oneRole|}}
+                          <div class="form-group">
+                              <table style="width:30%">
+                                  <tr>
+                                      <td width=50%><h5> {{oneRole.name}}</h5></td>
+                                      <td width=50%><a href="#" class="btn btn-default" {{action 'deleteRole' oneRole.id ID}}>Delete</a></td>
+                                  </tr>
+                              </table>
+                          </div>
+                      {{/each}}
+                        <!-- display a dropdown list to assign a new  user role  -->
+                        <br> <br>
+                        <select onchange={{action 'selectRole' value="target.value"}}>
+                            <option value="" disabled selected> -- Select System Role --</option>
+                          {{#each roleCodeModel as |roleChoice|}}
+                              <option value={{roleChoice.id}}>{{roleChoice.name}}</option>
+                          {{/each}}
+                        </select>
+
+                        <br> <br>
+                        <a href="#" class="btn btn-default" {{action 'done'}}>Done</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr/>
+{{else}}
+
+    <div class="row">
+        <div class="large-8 large-centered columns alert-box info radius">
+            <p>This feature (MR001) is not allowed for your account, please contact the system administrator for more information.</p>
+            <a href="#" class="button alert tiny" {{action 'done'}}>OK</a>
+        </div>
+    </div>
+
+{{/if}}
+{{else}}
+  {{#edit-user ID=ID status=status}}
+      <div class="form-group">
+          <ul>
+            {{yield}}
+          </ul>
+      </div>
+      <div class="form-group">
+          <a href="#" class="btn btn-default" {{action 'manageRoles' ID}}>Manage Roles</a>
+      </div>
+  {{/edit-user  }}
+
+{{/if}}
+
+
+

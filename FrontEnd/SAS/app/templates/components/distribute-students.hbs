@@ -1,0 +1,57 @@
+{{#if distributed}}
+{{else}}
+{{#if D001IsPermitted}}
+    {{#if rulesAccepted}}
+    {{#if hideD}}
+        <h3>Students are being distributed...</h3>
+    {{else}}
+        <a href="#" class="btn btn-default" role="button" {{action 'distribute'}}>Distibute Students</a>
+    {{/if}}
+    {{else}}
+        <table style = "width: 85%;" class="student-table">
+            <tr>
+            <th>Academic Program</th>
+            <th>Description</th>
+            </tr>
+            {{#each distributionRules as |rule|}}
+            <tr>
+                <td>{{rule.academicProgramCode.name}}</td>
+                <td>{{rule.description}}</td>
+            </tr>
+            {{/each}}
+        </table>
+        <a href="#" class="btn btn-default" role="button" {{action 'queries'}}>Accept Distribution Rules For Redistribution</a>
+        <a href="#" class="btn btn-default" role="button" {{action 'showDistribution'}}>Show Current Distribution</a>
+    {{/if}}
+{{else}}
+    <h3>Sorry you do not have permission to distribute students.</h3>
+{{/if}}
+{{/if}}
+{{#if distributed}}
+    <a href="#" class="btn btn-default" role="button" {{action 'hideDistribution'}}>Hide Current Distribution</a>
+    <table style = "width: 85%;" class="student-table">
+        <tr>
+            <th>Student</th>
+            <th>Student Number</th>
+            <th>Action</th>
+            <th>Program</th>
+            <th>Edit</th>
+        </tr>
+        {{#each sortedStudents as |oneStudent index|}}
+        <tr>
+            <td>{{oneStudent.studentName}}</td>
+            <td>{{oneStudent.id}}{{oneCourse.course.number}}</td>
+            <td>{{oneStudent.accept}}</td>
+            <td>{{oneStudent.program.name}}</td>
+            
+            <td>{{edit-distribution studentID=oneStudent.id}}</td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="4">Students have not yet been distributed.</td>
+        </tr>
+        {{/each}}
+    </table>
+{{else}}
+    
+{{/if}}

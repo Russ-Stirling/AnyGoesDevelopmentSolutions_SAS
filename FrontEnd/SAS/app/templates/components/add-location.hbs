@@ -1,0 +1,131 @@
+{{#if isEditing}}
+<div>
+    <h4>Add Code for {{flag}} </h4>
+    <form>
+        <!--<div class="row">
+            <div class="large-12 columns">
+                <label>Tile
+                  {{input value=title  id="title" type="text" }}
+                </label>
+            </div>
+        </div>-->
+        <br>
+        <div class="form-group">
+            <table style="width:40%">
+              <tr>
+                <td>Country:</td>
+                {{#if newCountryCode}}
+                <td>{{input value=country  id="country" type="text" }}</td>
+                <a href="#" class="btn btn-default" role="button" {{action 'saveCountry'}}>Save Country</a>
+                {{else}}
+                <td>
+                    <div class="form-group">
+                      <select class="form-control" onchange={{action "selectCountry" value="target.value"}}>
+                        <option>Please select a country</option> 
+                          {{#each countriesModel as |oneCountry|}}
+                              <option value={{oneCountry.id}}>
+                                {{oneCountry.name}}
+                              </option>
+                          {{/each}}
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="#" class="btn btn-default" role="button" {{action "deleteCountryCode" country}}>Delete</a>
+                  </td>
+                  <td>
+                    {{edit-code flag="country" id=country}}
+                  </td>
+                  {{/if}}
+                
+              </tr><br>
+              {{#if noCountry}}
+              <tr>
+                <td>Province:</td>
+                {{#if newProvinceCode}}
+                <td>{{input value=province  id="province" type="text" }}</td>
+                <a href="#" class="btn btn-default" role="button" {{action 'saveProvince'}}>Save Province</a>
+                {{else}}
+                <td>
+                    <div class="form-group">
+                      <select class="form-control" onchange={{action "selectProvince" value="target.value"}}> 
+                        <option>Please select a province</option>
+                          {{#each provincesModel as |oneProvince|}}
+                              <option value={{oneProvince.id}}>
+                                {{oneProvince.name}}
+                              </option>
+                          {{/each}}
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="#" class="btn btn-default" role="button" {{action "deleteProvinceCode" province}}>Delete</a>
+                  </td>
+                  <td>
+                    {{edit-code flag="province" id=province}}
+                  </td>
+                {{/if}}
+              </tr>
+              {{else}}
+              {{/if}}
+              <br>
+              {{#if noProvince}}
+              <tr>
+                <td>City:</td>
+                <td>{{input value=city  id="city" type="text"}}</td>
+                <td>
+                <div>
+                  <a href="#" class="btn btn-default" role="button" {{action 'saveCode'}}>Save City</a>
+                </div>
+                </td>
+              </tr><br>
+              {{#if cityAdding}}
+                <h3>Current cities:</h3>
+                <table style="width: 20%;" class="base-table">
+                  <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                  {{#each citiesModel as |oneCity|}}
+                  <tr>
+                    <td >
+                      <div class="large-6 columns">
+                        {{oneCity.name}}
+                      </div>
+                      <div></div>
+                    </td>
+                    <td>
+                      {{edit-code flag="city" id=oneCity.id}}
+                    </td>
+                    <td>
+                      <a href="#" class="btn btn-default" role="button" {{action "deleteCityCode" oneCity.id}}>Delete</a>
+                    </td>
+                  </tr>
+                  {{else}}
+                  <tr><td colspan="3">No cities currently exist.</td></tr>
+                  {{/each}}
+                </table><br>
+              {{else}}
+              {{/if}}
+              <br><br>
+              {{else}}
+              {{/if}}
+            </table>
+        </div>
+    </form>
+    <div>
+      <a href="#" class="btn btn-default" role="button" {{action 'addNewCountryCode'}}>New Country</a>
+      {{#if noCountry}}
+      <a href="#" class="btn btn-default" role="button" {{action 'addNewProvinceCode'}}>New Province</a>
+      {{else}}
+      {{/if}}
+      <a href="#" class="btn btn-default" role="button" {{action 'cancel'}}>Done</a>
+
+    </div>
+</div>
+
+
+{{else}}
+    <a href="#" class="btn btn-default" role="button" {{action 'addNewCode'}}>Add Code</a>
+{{/if}}

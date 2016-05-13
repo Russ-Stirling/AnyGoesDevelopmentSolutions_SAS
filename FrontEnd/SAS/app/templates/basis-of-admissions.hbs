@@ -1,0 +1,31 @@
+<div class = "main-body">
+    {{add-code flag="basisOfAdmission"}}
+    <br>
+    <h3>Current Basis of Admissions</h3>
+    <table class="student-table">
+      <tr>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneBasisOfAdmission|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneBasisOfAdmission.date}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneBasisOfAdmission.comment}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="basisOfAdmission" id=oneBasisOfAdmission.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

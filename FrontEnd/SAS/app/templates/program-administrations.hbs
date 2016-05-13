@@ -1,0 +1,32 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of program administrations</h3>
+    <br>
+    {{add-code flag="program-administration"}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneProgramAdministration|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneProgramAdministration.name}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+            <div class="large-6-columns">
+              {{oneProgramAdministration.position}}
+            </div>
+            <div></div>
+        </td>
+        <td>
+          {{edit-code flag="program-administration" id=oneProgramAdministration.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

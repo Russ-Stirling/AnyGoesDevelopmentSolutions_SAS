@@ -1,0 +1,173 @@
+{{#if AC001IsPermitted }}
+{{#if isEditing}}
+<div>
+    <h3>Use this page to make adjustments to the codes</h3>
+    <form>
+        <br>
+        <div class="form-group">
+            <table style="width:20%">
+              {{#if nameBox}}
+                  <tr>
+                    <td>Name:</td>
+                    <td>{{input value=name  id="name" type="text"}}</td> 
+                  </tr><br>
+              {{else}}
+              {{/if}}
+              {{#if basisofa}}
+                  <tr>
+                    <td>Date:</td>
+                    <td>{{input value=date  id="date" type="date"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Comment:</td>
+                    <td>{{input value=comment  id="comment" type="text"}}</td> 
+                  </tr><br>
+              {{else}}
+              {{/if}}
+              {{#if highschoolavg}}
+                  <tr>
+                    <td>First:</td>
+                    <td>{{input value=first  id="first" type="number"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Midyear:</td>
+                    <td>{{input value=midyear  id="midyear" type="number"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Final:</td>
+                    <td>{{input value=final  id="final" type="number"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Grade 11:</td>
+                    <td>{{input value=gr11  id="gr11" type="number"}}</td> 
+                  </tr><br>
+              {{else}}
+              {{/if}}
+              {{#if highschoolCourse}}
+                  <tr>
+                    <td>Description:</td>
+                    <td>{{input value=description  id="description" type="text"}}</td> 
+                  </tr><br>
+              {{else}}
+              {{/if}}
+              {{#if markAndSubjectDrop}}
+                  <tr>
+                    <td>Level:</td>
+                    <td>{{input value=level  id="level" type="number"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Source:</td>
+                    <td>{{input value=source  id="source" type="text"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Unit:</td>
+                    <td>{{input value=unit  id="unit" type="number"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Grade:</td>
+                    <td>{{input value=grade  id="grade" type="number"}}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Secondary School</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" onchange={{action "selectSecondarySchool" value="target.value"}}> 
+                        <option>-- Please select a school --</option>
+                            {{#each secondarySchoolModel as |oneSecondarySchool|}}
+                            <option value={{oneSecondarySchool.id}}>
+                            {{oneSecondarySchool.name}}
+                        </option>
+                        {{/each}}
+                        </select>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Subject</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" onchange={{action "selectHighschoolSubject" value="target.value"}}> 
+                        <option>-- Please select a subject --</option>
+                            {{#each highschoolSubjectModel as |oneHighschoolSubject|}}
+                            <option value={{oneHighschoolSubject.id}}>
+                            {{oneHighschoolSubject.name}}
+                        </option>
+                        {{/each}}
+                        </select>
+                        </div>
+                    </td>
+                    </tr>
+              {{else}}
+              {{/if}}
+              {{#if facultyDrop}}
+                  <tr>
+                    <td>Faculty</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" onchange={{action "selectFaculty" value="target.value"}}> 
+                        <option>-- Please select a faculty --</option>
+                            {{#each facultiesModel as |oneFaculty|}}
+                            <option value={{oneFaculty.id}}>
+                            {{oneFaculty.name}}
+                        </option>
+                        {{/each}}
+                        </select>
+                        </div>
+                    </td>
+                    </tr>
+              {{else}}
+              {{/if}}
+              {{#if departmentDrop}}
+                  <tr>
+                    <td>Position:</td>
+                    <td>{{input value=position  id="position" type="text" }}</td> 
+                  </tr><br>
+                  <tr>
+                    <td>Department</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" onchange={{action "selectDepartment" value="target.value"}}> 
+                        <option>-- Please select a department --</option>
+                            {{#each departmentsModel as |oneDepartment|}}
+                            <option value={{oneDepartment.id}}>
+                            {{oneDepartment.name}}
+                        </option>
+                        {{/each}}
+                        </select>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Academic Program</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" onchange={{action "selectAcademicProgramCode" value="target.value"}}> 
+                        <option>-- Please select an academic program --</option>
+                            {{#each academicProgramCodesModel as |oneAcademicProgram|}}
+                            <option value={{oneAcademicProgram.id}}>
+                            {{oneAcademicProgram.name}}
+                        </option>
+                        {{/each}}
+                        </select>
+                        </div>
+                    </td>
+                  </tr>
+              {{else}}
+              {{/if}}
+            </table>
+            
+        </div>
+    </form>
+    <br>
+    <div>
+        <a href="#" class="btn btn-default" role="button" {{action 'savePost'}}>Save</a>
+        <a href="#" class="btn btn-default" role="button" {{action 'cancel'}}>Cancel</a>
+    </div>
+</div>
+
+
+{{else}}
+    <a href="#" class="btn btn-default" role="button" {{action 'addNewCode'}}>Add Code</a>
+{{/if}}
+{{else}}
+{{/if}}

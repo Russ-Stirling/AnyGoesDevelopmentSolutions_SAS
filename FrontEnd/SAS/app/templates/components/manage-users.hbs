@@ -1,0 +1,9 @@
+{{#each usersModel as |oneUser|}}
+  {{#assign-role ID=oneUser.id status=oneUser.enabled}}
+      <h4>{{oneUser.firstName}} {{oneUser.lastName}} </h4>
+  {{/assign-role  }}
+
+{{/each}}
+<br>
+
+{{add-new-user}}

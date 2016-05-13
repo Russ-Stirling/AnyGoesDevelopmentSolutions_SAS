@@ -1,0 +1,129 @@
+{{#if AR001IsPermitted}}
+{{#if isEditing}}
+<div>
+    <form>
+        <br>
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td class="student-form-title">Academic Program</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" class="form-control-main" onchange={{action "selectAcademicProgram" value="target.value"}}> 
+                        <option>-- Please select an academic program --</option>
+                            {{#each academicProgramsModel as |oneAcademicProgram|}}
+                            <option value={{oneAcademicProgram.id}}>
+                            {{oneAcademicProgram.name}}
+                        </option>
+                        {{/each}}
+                        </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="student-form-title">Description</td>
+                    <td>{{textarea value=description  id="description"}}</td>
+                </tr>
+            </table>
+            <table border = "1">
+                <tr>
+                    <th>Logical Expression</th>
+                    <th>
+                    {{#each logicalExpression as |line|}}
+                    {{line.frontBracket}}{{line.ruleType}}{{line.course}}{{line.expression}}{{line.value}}{{line.endBracket}}{{line.logic}}
+                    {{else}}
+                    {{/each}}
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" onchange={{action "selectFrontBrackets" value="target.value"}}>
+                          <option value=""></option>
+                          <option value="(">(</option>
+                          <option value="((">((</option>
+                          <option value="(((">(((</option>
+                          <option value="((((">((((</option>
+                          <option value="(((((">(((((</option>
+                        </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                        <select id="rules" class="form-control"onchange={{action "selectRuleType" value="target.value"}}>
+                          <option value = "unselected">--Please Select a Rule Type</option>
+                          <option value="CumulativeAverage">Cumulative Average</option>
+                          <option value="DisciplineVolume">Discipline Volume</option>
+                          <option value="CourseMark">Course Mark</option>
+                        </select>
+                        </div>
+                    </td>
+                    {{#if addingCourseAverage}}
+                        <td>
+                            <div class="form-group">
+                            <select class="form-control"onchange={{action "selectCourse" value="target.value"}}> 
+                            <option>Select</option>
+                                {{#each sortedCourseCodes as |oneCourseCode|}}
+                                    <option value={{oneCourseCode.id}}>
+                                    {{oneCourseCode.code}}{{oneCourseCode.number}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                            </div>
+                        </td>
+                    {{else}}
+                    {{/if}}
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control"onchange={{action "selectOperator" value="target.value"}}>
+                          <option value="Unselected">Select</option>
+                          <option value="<">&lt;</option>
+                          <option value="<=">&lt;=</option>
+                          <option value="==">=</option>
+                          <option value=">">></option>
+                          <option value=">=">>=</option>
+                        </select>
+                        </div>
+                    </td>
+                    <td>
+                        {{input value=grade  id="grade" type="number" min="1" max="99"}}
+                    </td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control"onchange={{action "selectEndBrackets" value="target.value"}}>
+                          <option value=""></option>
+                          <option value=")">)</option>
+                          <option value="))">))</option>
+                          <option value=")))">)))</option>
+                          <option value="))))">))))</option>
+                          <option value=")))))">)))))</option>
+                        </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control"onchange={{action "selectExpression" value="target.value"}}>
+                          <option value=""></option>
+                          <option value="&&">And</option>
+                          <option value="||">Or</option>
+                        </select>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-default" role="button" {{action 'saveLine'}}>Add New Line</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <br>
+    <div>
+        <a href="#" class="btn btn-default" role="button" {{action 'savePost'}}>Save</a>
+        <a href="#" class="btn btn-default" role="button" {{action 'cancel'}}>Cancel</a>
+    </div>
+</div>
+{{else}}
+    <a class="btn btn-default" role="button" {{action 'addNewCode'}}>Add Code</a>
+{{/if}}
+{{else}}
+{{/if}}

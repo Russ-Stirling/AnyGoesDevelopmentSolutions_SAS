@@ -1,0 +1,25 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of term codes</h3>
+    <br>
+    {{add-code flag="term-code"}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneTermCode|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneTermCode.name}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="term-code" id=oneTermCode.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

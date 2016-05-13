@@ -1,0 +1,24 @@
+<div class = "main-body">
+    <br>
+    {{add-code flag="academic-load"}}
+    <br>
+      <table class="student-table">
+        <tr>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+        {{#each model as |oneAcademicLoad|}}
+        <tr>
+          <td >
+            <div class="large-6-columns">
+              {{oneAcademicLoad.name}}
+            </div>
+            <div></div>
+          </td>
+            <td>
+              {{edit-code flag="academic-load" id=oneAcademicLoad.id}}
+            </td>
+        </tr>
+        {{/each}}
+      </table><br>
+</div>

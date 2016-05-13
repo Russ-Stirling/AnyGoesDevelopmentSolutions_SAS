@@ -1,0 +1,86 @@
+{{#if  isUserFormEditing }}
+  {{#if ANU01IsPermitted }}
+  <div class = "main-body">
+    <br>
+    <hr/>
+    <h3>Create User Account</h3>
+    <form>
+        <div class="form-group">
+            <div>
+                <div>
+                    <div>
+                        <label>First Name</label>
+                    </div>
+                    <div >
+                      {{input value=firstName type="text" placeholder="enter first name" }}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Last Name</label>
+                    </div>
+                    <div>
+                      {{input value=lastName type="text" placeholder="enter last name"}}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>EMail Address</label>
+                    </div>
+                    <div>
+                      {{input value=email type="text" placeholder="enter email address"}}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>User Name</label>
+                    </div>
+                    <div>
+                      {{input value=userName type="text" placeholder="enter user name"}}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Password</label>
+                    </div>
+                    <div>
+                      {{input value=password type="password" placeholder="enter password"}}
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Account Expiry Date</label>
+                    </div>
+                    <div>
+                        <input value={{selectedDate}} id="AccountExpiryDate" type="date" onchange={{action 'assignDate' value="target.value"}}>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+    </form>
+    <br>
+    <a href="#" class="btn btn-default" {{action 'saveAccount'}}>Save</a>
+    <a href="#" class="btn btn-default" {{action 'cancel'}}>Cancel</a>
+    </div>
+{{else}}
+
+    <div class="row">
+        <div class="large-8 large-centered columns alert-box info radius">
+            <p>This feature (ANU01) is not allowed for your account, please contact the system administrator for more information.</p>
+            <a href="#" class="btn btn-default" {{action 'cancel'}}>OK</a>
+        </div>
+    </div>
+
+{{/if}}
+{{else}}
+    <div class="form-group">
+        <div>
+            <br>
+            <a href="#" class="btn btn-default" {{action 'addNewAccount'}}>Add User</a>
+        </div>
+    </div>
+{{/if}}
+
+
+

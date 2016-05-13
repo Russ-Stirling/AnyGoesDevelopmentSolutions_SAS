@@ -1,0 +1,45 @@
+<div class = "main-body">
+    {{add-code flag="highschoolAdmissionAverage"}}
+    <br>
+    <h3>Current Highschool Admission Averages</h3>
+    <table class="student-table">
+      <tr>
+        <th>First</th>
+        <th>Midyear</th>
+        <th>Final</th>
+        <th>Grade 11</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneHighschoolAdmissionAverage|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolAdmissionAverage.first}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolAdmissionAverage.midyear}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolAdmissionAverage.final}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolAdmissionAverage.grade11}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="highschoolAdmissionAverage" id=oneHighschoolAdmissionAverage.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

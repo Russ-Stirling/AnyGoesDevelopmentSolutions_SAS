@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SAS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{content-for 'head'}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/sas.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/sandstone/bootstrap.min.css" rel="stylesheet">
+
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="app/styles/app.css">-->
+
+    {{content-for 'head-footer'}}
+    
+    <link rel="stylesheet" href="styles/vendor.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/app.scss">
+  </head>
+  <body>
+    {{content-for 'body'}}
+
+    <script src="assets/vendor.js"></script>
+    <script src="assets/sas.js"></script>
+    
+    
+    <!--<script src="app/app.js"></script>-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="assets/parsing/dist/xlsx.full.min.js"></script>
+    <!--<script src="assets/parsing/xlsx.js"></script>
+    <script src="assets/parsing/jszip.js"></script> -->
+    
+    {{content-for 'body-footer'}}
+  </body>
+</html>

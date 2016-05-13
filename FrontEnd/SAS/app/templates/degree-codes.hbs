@@ -1,0 +1,25 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of degreee codes</h3>
+    <br>
+    {{add-code flag="degree-code"}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneDegreeCode|}}
+      <tr>
+        <td>
+          <div class="large-6-columns">
+            {{oneDegreeCode.name}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="degree-code" id=oneDegreeCode.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

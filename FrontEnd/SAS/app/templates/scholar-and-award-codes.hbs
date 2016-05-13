@@ -1,0 +1,24 @@
+<div class = "main-body">
+    {{add-code flag="scholarAndAwardCode"}}
+    <br>
+    <h3>Current Scholar and Award Codes</h3>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneScholarAwardCode|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneScholarAwardCode.name}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="scholarAndAwardCode" id=oneScholarAwardCode.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

@@ -1,0 +1,63 @@
+{{#if isManagingPermission}}
+    <hr/>
+    <div class="form-group">
+        <div class="main-body">
+            <h3> Assign Capabilities for {{roleName}}</h3>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="main-body">
+            <div>
+                <div>
+                    <div>
+                        <br>
+                        <!-- display a list of assigned system features names -->
+                        <!-- for the current user role                        -->
+                      {{#each sysFeatureModel as |oneFeature|}}
+                          <div class="form-group">
+                              <table style="width:30%">
+                                  <tr>
+                                      <td width=50%><h5>{{oneFeature.code}} {{oneFeature.sysFeature}}</h5></td>
+                                      <td width=50%><a href="#" class="btb btn-default" {{action 'deleteRoleCode' oneFeature.id}}>Delete</a></td>
+                                  </tr>
+                              </table>
+                          </div>
+                      {{/each}}
+                        <!-- display a dropdown list to assign a new  system features  -->
+                        <br> <br>
+                        <select onchange={{action 'selectPermission' value="target.value"}}>
+                            <option value="" disabled selected> -- Select Permission --</option>
+                          {{#each rolePermissionModel as |permissionChoice|}}
+                              <option value={{permissionChoice.id}}>{{permissionChoice.code}} {{permissionChoice.sysFeature}}</option>
+                          {{/each}}
+                        </select>
+
+                        <br> <br>
+                        <a href="#" class="btn btn-default" {{action 'done'}}>Done</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr/>
+{{else}}
+    <div class="form-group">
+        <div class="main-body">
+            <div>
+              {{yield}}
+            </div>
+            <div>
+                <a href="#" class="btn btn-default" {{action 'managePermission'}}>Manage Permissions</a>
+            </div>
+            <div>
+              {{delete-role key=code}}
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+
+
+

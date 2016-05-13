@@ -1,0 +1,45 @@
+<div class = "main-body">
+    {{add-code flag="highschoolCoursesMark"}}
+    <br>
+    <h3>Current Highschool Course Mark</h3>
+    <table class="student-table">
+      <tr>
+        <th>Level</th>
+        <th>Source</th>
+        <th>Unit</th>
+        <th>Grade</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneHighschoolCoursesMark|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolCoursesMark.level}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolCoursesMark.source}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolCoursesMark.unit}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneHighschoolCoursesMark.grade}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="highschoolCoursesMark" id=oneHighschoolCoursesMark.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

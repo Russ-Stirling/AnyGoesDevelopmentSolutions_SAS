@@ -1,0 +1,281 @@
+{{#if AS001IsPermitted }}
+{{#if isEditing}}
+    <!--<h4>Add Code for {{flag}} </h4>-->
+      <form>
+          <br>
+            <p class="subtitle">Basic Information</p>
+              <table>
+                <tr>
+                  <td class="student-form-title">First Name:</td>
+                  <td>{{input value=firstName  id="firstName" type="text" }}</td>
+                </tr><br>
+                <tr>
+                  <td class="student-form-title">Last Name:</td>
+                  <td>{{input value=lastName  id="lastName" type="text" }}</td>
+                </tr><br>
+                <tr>
+                  <td class="student-form-title">Student ID</td>
+                  <td>{{input value=studentID  id="studentID" type="text" }}</td>
+                </tr><br>
+                <tr>
+                  <td class="student-form-title">Date of Birth:</td>
+                  <td>{{input value=dob  id="dob" type="date" }}</td>
+                </tr><br>
+                <tr>
+                    <td class="student-form-title">Gender</td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-control" class="form-control-main" onchange={{action "selectGender" value="target.value"}}> 
+                          <option> -- Please select a gender --</option>
+                            {{#each gendersModel as |oneGender|}}
+                                <option value={{oneGender.id}}>
+                                  {{oneGender.name}}
+                                </option>
+                            {{/each}}
+                        </select>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="student-form-title">Residency</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" class="form-control-main" onchange={{action "selectResidency" value="target.value"}}>
+                            <option>-- Please select a residency --</option>
+                            {{#each residenciesModel as |oneResidency|}}
+                                <option value={{oneResidency.id}}>
+                                  {{oneResidency.name}}
+                                </option>
+                            {{/each}}
+                        </select>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="student-form-title">Academic Load</td>
+                    <td>
+                        <div class="form-group">
+                        <select class="form-control" class="form-control-main" onchange={{action "selectAcademicLoad" value="target.value"}}>
+                          <option>-- Please select an academic load --</option>
+                            {{#each academicLoadsModel as |oneAcademicLoad|}}
+                                <option value={{oneAcademicLoad.id}}>
+                                  {{oneAcademicLoad.name}}
+                                </option>
+                            {{/each}}
+                        </select>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                  <td class="student-form-title">Country</td>
+                  <td>
+                    <div class="form-group">
+                      <select class="form-control" class="form-control-main" onchange={{action "selectCountry" value="target.value"}}> 
+                        <option>-- Please select a country --</option>
+                          {{#each countriesModel as |oneCountry|}}
+                            <option value={{oneCountry.id}}>
+                              {{oneCountry.name}}
+                            </option>
+                          {{/each}}
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+                {{#if countryChoosen}}
+                  <tr>
+                    <td class="student-form-title">Province</td>
+                    <td>
+                      <div class="form-group">
+                      <select class="form-control" class="form-control-main" onchange={{action "selectProvince" value="target.value"}}> 
+                        <option>-- Please select a province --</option>
+                          {{#each provincesModel as |oneProvince|}}
+                            <option value={{oneProvince.id}}>
+                              {{oneProvince.name}}
+                            </option>
+                          {{/each}}
+                      </select>
+                    </div>
+                    </td>
+                  </tr>
+                {{else}}
+                {{/if}}
+                {{#if provinceChoosen}}
+                  <tr>
+                    <td class="student-form-title">City</td>
+                    <td>
+                      <div class="form-group">
+                      <select class="form-control" class="form-control-main" onchange={{action "selectCity" value="target.value"}}> 
+                        <option>-- Please select a city --</option>
+                          {{#each citiesModel as |oneCity|}}
+                            <option value={{oneCity.id}}>
+                              {{oneCity.name}}
+                            </option>
+                          {{/each}}
+                      </select>
+                    </div>
+                    </td>
+                  </tr>
+                {{else}}
+                {{/if}}
+                <br>
+              </table>
+              {{#if addingTerm}}
+              <table>
+                <tr>
+                  <th colspan="2"><p class="subtitle">Academic Record</p></th>
+                </tr>
+                <tr>
+                  <td class="student-form-title">Plan</td>
+                    <td>
+                        <div class="form-group">
+                            <select  class="form-control" class="form-control-main" onchange={{action "selectDegree" value="target.value"}}> 
+                            <option> -- Select -- </option>
+                                {{#each degreeCodesModel as |oneDegreeCode|}}
+                                    <option value={{oneDegreeCode.id}}>
+                                    {{oneDegreeCode.name}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </td>   
+                </tr>
+                <tr>
+                  <td class="student-form-title">Term</td>
+                  <td>
+                    <div class="form-group">
+                      <select class="form-control" class="form-control-main" onchange={{action "selectTerm" value="target.value"}}> 
+                        <option> -- Select -- </option>
+                        {{#each termCodesModel as |oneTermCode|}}
+                          <option value={{oneTermCode.id}}>
+                          {{oneTermCode.name}}
+                          </option>
+                        {{/each}}
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="student-form-title">Status</td>
+                  <td >{{input value=status  id="status" type="text" }}</td>
+                </tr>
+                <tr>
+                  <td class="student-form-title">Level</td>
+                  <td>{{input value=level  id="level" type="number" }}</td>
+                </tr>
+                <tr>
+                  <td class="student-form-title">Comment</td>
+                  <td>{{textarea value=comment  id="comment"}}</td>
+                </tr>
+              </table>
+              <a href="#" class="btn btn-default" role="button" {{action 'addTerm' termCode degreeCode}}>Add New Term</a>
+              {{else}}
+              <table id="detail-table" border=1px>
+                <tr>
+                  <th colspan="4"><p class="subtitle">Add Courses to: {{termName}}</p></th>
+                </tr>
+                <tr>
+                  <th>Grade</th>
+                  <th>Section</th>
+                  <th>Course Code</th>
+                  <th>Actions</th>
+                </tr>
+                <tr>
+                  <td align="center">{{input value=grade  id="grade" type="number" min="1" max="99"}}</td>
+                    <td align="center">{{input value=section  id="section" type="number" min="1" max="999"}}</td>
+                    <td align="center">
+                      <div class="form-group">
+                        <select class="form-control" style="width: 100%" onchange={{action "selectCourse" value="target.value"}}> 
+                          <option>Select</option>
+                          {{#each sortedCourseCodes as |oneCourseCode|}}
+                          <option value={{oneCourseCode.id}}>
+                            {{oneCourseCode.name}}
+                          </option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </td>
+                    <td align="center"><a href="#" class="btn btn-default" role="button" {{action 'saveCourse'}}>Save Course</a>
+                    </td>
+                  </tr>
+              </table>
+              <a href="#" class="btn btn-default" role="button" {{action 'saveTerm'}}>Save Term</a>
+              {{/if}}
+              
+              
+              {{#each blah as |termRecord indexOf|}}
+              <h4>Plan: {{termRecord.degree.name}}</h4>
+              <h4>Term: {{termRecord.term.name}}</h4>
+              <label>
+                Status: {{termRecord.status}}<br>
+                Level: {{termRecord.level}}<br>
+                Comment: {{termRecord.comment}}
+              </label>
+              <table id="detail-table" border=1px>
+                   <tr>
+                    <th>Grade</th>
+                    <th>Section</th>
+                    <th>Course Code</th>
+                    <th>Actions</th>
+                  </tr>
+                  {{#each termRecord.courses as |oneCourse indexOf|}}
+                  <tr class="full-cell">
+                    <td><br></td>
+                    <td><br></td>
+                    <td><br></td>
+                    <td><br></td>
+                  </tr>
+                  <tr>
+                    <td>{{oneCourse.grade}}</td>
+                    <td>{{oneCourse.section}}</td>
+                    <td>{{oneCourse.courseName}}</td>
+                    <td align="right">
+                      <a href="#" class="btn btn-default" role="button" {{action 'editCourse' indexOf}}> Edit </a> 
+                      or 
+                      <a href="#" class="btn btn-default" role="button" {{action 'deleteCourse' indexOf}}> Delete</a>
+                    </td>
+                  </tr>
+              {{/each}}
+              
+              </table>
+              {{/each}}
+              <br>
+              
+              
+              <br><br>
+              <p class="subtitle">ITR Programs (Please select them in order)</p>
+              
+              <table>
+                <ol>
+                {{#each choiceList as |oneChoice index|}}
+                  <li id="textChoices">
+                    {{oneChoice}} <a href="#" {{action 'removedAcademicProgramCode' oneChoice index}}>Remove</a>
+                  </li>
+                  <br>
+                {{/each}}
+                </ol>
+                
+                {{#each allItrs as |oneAcademicProgramCode index|}}
+                  <tr>
+                    <td style="width: 40%">
+                      <a href="#" class="btn btn-default" role="button" style="width:90%" {{action 'chosenAcademicProgram' oneAcademicProgramCode.id oneAcademicProgramCode.name index}}>{{oneAcademicProgramCode.name}}</a>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <br>
+                  {{/each}}
+              </table>
+      </form>
+      <div>
+        <div id="add-save-btns">
+          <a href="#" class="btn btn-default" role="button" style="width: 10%;" {{action 'savePost'}}>Save</a>
+          <a href="#" class="btn btn-default" role="button" style="width: 10%;" {{action 'cancel'}}>Cancel</a>
+        </div>
+      </div>
+      <br>
+{{else}}
+    <a href="#" class="btn btn-default" role="button" style="width:30%;" {{action 'addNewCode'}}>Add New Student</a>
+
+{{/if}}
+{{else}}
+{{/if}}

@@ -1,0 +1,14 @@
+<div class = "main-body">
+    <h3>Use this page to view a list of all itr requests</h3>
+    <ul>
+      {{#each model as |oneGender|}}
+          <div class="large-6 columns">
+              <li>
+                {{oneGender.name}}
+              </li>
+          </div>
+          <div></div>
+      {{/each}}
+    </ul>
+    {{add-code flag="itr-program"}}
+</div>

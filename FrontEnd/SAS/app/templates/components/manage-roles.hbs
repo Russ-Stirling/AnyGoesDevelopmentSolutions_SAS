@@ -1,0 +1,40 @@
+{{#if MSR01IsPermitted }}
+{{#if isEditing }}
+    <h2>Add new system role</h2>
+    <form>
+        <div class="form-group">
+            <div>
+                <label>Role name
+                  {{input value=name type="text" }}
+                </label>
+            </div>
+        </div>
+    </form>
+    <br>
+    <a href="#" class="btn btn-default" {{action 'save'}}>Save</a>
+    <a href="#" class="btn btn-default" {{action 'cancel'}}>Cancel</a>
+{{else}}
+  {{#each roleCodeModel as |oneCode|}}
+    {{#manage-permission code=oneCode.id}}
+        <h4>{{oneCode.name}}  </h4>
+    {{/manage-permission}}
+  {{/each}}
+  <div class="form-group">
+      <div>
+          <br>
+          <a href="#" class="btn btn-default" {{action 'addNewRole'}}>Add New Role</a>
+      </div>
+  </div>
+{{/if}}
+{{else}}
+
+<div class="form-group">
+    <div>
+        <br>
+        <h3>This feature (MSR01) is not allowed for your account. </h3>
+        <h3>Please contact the system administrator for more information.</h3>
+
+    </div>
+</div>
+
+{{/if}}

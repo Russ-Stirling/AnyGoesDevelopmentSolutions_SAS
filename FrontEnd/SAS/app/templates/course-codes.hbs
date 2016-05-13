@@ -1,0 +1,47 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of courses</h3>
+    <br>
+    {{add-course}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Number</th>
+        <th>Unit</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneCourseCode|}}
+      <tr>
+        <td>
+          <div class="large-6-columns">
+            {{oneCourseCode.name}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          <div class="large-6-columns">
+            {{oneCourseCode.code}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          <div class="large-6-columns">
+            {{oneCourseCode.number}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          <div class="large-6-columns">
+            {{oneCourseCode.unit}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="courseCode" id=oneCourseCode.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>
+

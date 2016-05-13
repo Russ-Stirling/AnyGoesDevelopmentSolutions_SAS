@@ -1,0 +1,57 @@
+{{#if MF001IsPermitted }}
+{{#if isEditing }}
+    <h2>Add new system feature</h2>
+    <form>
+        <div class="form-group">
+            <div class="main-body">
+                <label>Feature code
+                  {{input value=code type="text" }}
+                </label>
+                <label>Feature name
+                  {{input value=sysFeature type="text" }}
+                </label>
+            </div>
+        </div>
+    </form>
+    <br>
+    <a href="#" class="btn btn-default" {{action 'save'}}>Save</a>
+    <a href="#" class="btn btn-default" {{action 'cancel'}}>Cancel</a>
+{{else}}
+      <div class="form-group">
+        <div class="main-body">
+          <table align="left" style="width:30%">
+            {{#each rolePermissionModel as |oneFeature|}}
+            <tr>
+              <td width=30%>{{oneFeature.code}}</td>
+              <td width=30%>{{oneFeature.sysFeature}}</td>
+              <td width=30%>{{delete-feature ID=oneFeature.id }}</td>
+            </tr>
+            {{/each}}
+          </table>
+        </div>
+      </div>
+  <div class="form-group">
+      <div>
+        <table>
+          <tr>
+            <td>
+              <br>
+              <a href="#" class="btn btn-default" {{action 'addNewFeature'}}>Add System Feature</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+  </div>
+{{/if}}
+{{else}}
+
+    <div class="form-group">
+        <div class="large-8 large-centered columns alert-box info radius">
+            <br>
+            <h3>This feature (MF001) is not allowed for your account. </h3>
+            <h3>Please contact the system administrator for more information.</h3>
+
+        </div>
+    </div>
+
+{{/if}}

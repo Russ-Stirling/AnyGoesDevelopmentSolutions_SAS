@@ -1,0 +1,25 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of departments</h3>
+    <br>
+    {{add-code flag="department"}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      {{#each model as |oneDepartment|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneDepartment.name}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          {{edit-code flag="department" id=oneDepartment.id}}
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

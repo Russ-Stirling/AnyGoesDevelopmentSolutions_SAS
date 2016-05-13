@@ -1,0 +1,43 @@
+{{#if UF001IsPermitted}}
+    <br>
+    <div class="form-group">
+        <table style="width:20%">
+            <tr>
+                <td>Data Type: </td>
+                <td>
+                    <div class="form-group">
+                    <select class="form-control" onchange={{action "selectDataType" value="target.value"}}> 
+                    <option>-- Please select a data type --</option>
+                    <option value="genders">Genders</option>
+                    <option value="students">Students</option>
+                    <option value="programRecords">Student Records</option>
+                    <option value="locations">Locations</option>
+                    <option value="residencies">Residencies</option>
+                    <option value="academicProgramCodes">Academic Program Codes</option>
+                    <option value="academicLoads">Academic Loads</option>
+                    <option value="courseCodes">Course Codes</option>
+                    <option value="termCodes">Term Codes</option>
+                    <option value="degreeCodes">Degree Codes</option>
+                    <option value="faculties">Faculties</option>
+                    <option value="departments">Departments</option>
+                    <option value="programAdministrations">Program Administrations</option>
+                    <option value="admissionRules">Admission Rules</option>
+                    </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn btn-default" role="button">{{#file-picker fileLoaded="fileLoaded" accept=".xlsx" readAs="readAsBinaryString"}}
+                        Upload Student Data
+                    {{/file-picker}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                {{userMessage}}
+                </td>
+            </tr>
+        </table>
+    </div>
+{{else}}
+    <h3>Sorry you do not have permission to upload data</h3>
+{{/if}}

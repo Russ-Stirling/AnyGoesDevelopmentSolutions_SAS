@@ -1,0 +1,36 @@
+<div class = "main-body">
+    <h3>Use this page to make adjustments to the list of admission rules</h3>
+    <br>
+    {{add-admission-rule}}
+    <br>
+    <table class="student-table">
+      <tr>
+        <th>Discipline</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      {{#each model as |oneAdmissionRule|}}
+      <tr>
+        <td >
+          <div class="large-6-columns">
+            {{oneAdmissionRule.academicProgramCode.name}}
+          </div>
+          <div></div>
+        </td>
+        <td >
+          <div class="large-6-columns">
+            {{oneAdmissionRule.description}}
+          </div>
+          <div></div>
+        </td>
+        <td>
+          <a href="#" class="btn btn-default" role="button">Edit</a>
+        </td>
+        <td>
+          <a href="#" class="btn btn-default" role="button" {{action "deleteCode" oneAdmissionRule.id}}>Delete</a>
+        </td>
+      </tr>
+      {{/each}}
+    </table><br>
+</div>

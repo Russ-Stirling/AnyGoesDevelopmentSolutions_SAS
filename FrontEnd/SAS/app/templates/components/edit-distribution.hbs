@@ -1,0 +1,36 @@
+{{#if EC001IsPermitted }}
+{{#if isEditing}}
+<div>
+    <form>
+        <div class="form-group">
+            <table style="width:100%">
+                <tr>
+                    <td>
+                    <select class="form-control" onchange={{action "selectAcademicCode" value="target.value"}}> 
+                        <option>-- Please select a department --</option>
+                        {{#each academicProgramCodesModel as |oneCode|}}
+                        <option value={{oneCode.id}}>
+                        {{oneCode.name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    </td>
+                    <td>
+                    <a href="#" class="btn btn-default" role="button" {{action 'savePost'}}>Save</a>
+                    <a href="#" class="btn btn-default" role="button" {{action 'cancel'}}>Cancel</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+{{else}}
+{{#if edited}}
+    Edited, refresh list to see all edits.
+{{else}}
+    <a href="#" class="btn btn-default" role="button" {{action "editCode"}}>Edit</a>
+{{/if}}
+{{/if}}
+{{else}}
+{{/if}}
+
